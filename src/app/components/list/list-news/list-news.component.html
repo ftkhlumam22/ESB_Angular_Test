@@ -1,0 +1,47 @@
+<div class="d-flex align-items-center flex-column mt-5">
+  <h2>Topik Terbaru</h2>
+  <div class="spinner-border text-info my-5" *ngIf="isLoading == true">
+    <span class="sr-only"></span>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card-columns" *ngIf="isLoading == false">
+        <div
+          class="card mx-auto my-4"
+          *ngFor="let askStory of askStories"
+          (click)="goToDetail(askStory.id)"
+        >
+          <div class="card-body">
+            <h5 class="card-title">{{ askStory.title }}</h5>
+            <p class="card-text">
+              <small class="text-muted">
+                Score: {{ askStory.score }} | Creator: {{ askStory.by }} |
+                Posting: {{ askStory.time | date }} | Comment:
+                {{ askStory.descendants }}
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<tfoot class="d-flex justify-content-center">
+  <tr>
+    <td colspan="4">
+      <ul class="pagination">
+        <li
+          class="page-item mx-2"
+          [class.disabled]="page == 1"
+          (click)="goToPrev()"
+        >
+          <a class="page-link">Sebelumnya</a>
+        </li>
+        <h2 class="mx-3">{{ page }}</h2>
+        <li class="page-item mx-2" (click)="goToNext()">
+          <a class="page-link">Berikutnya</a>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</tfoot>

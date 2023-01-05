@@ -1,0 +1,25 @@
+.card {
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: all 0.5s;
+  width: 600px;
+  height: auto;
+  padding-bottom: 20px;
+  transform: scale(1);
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #eee;
+  border: none;
+  transform: scale(1.1);
+}
+
+.card-body {
+  height: 90px;
+  overflow: hidden;
+}
+
+.pagination {
+  cursor: pointer;
+}

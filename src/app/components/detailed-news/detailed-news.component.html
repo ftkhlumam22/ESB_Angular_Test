@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <h2>{{ detailed.title }}</h2>
+  <div class="card" *ngIf="isLoading">
+    <div class="card-header">
+      <div class="skeleton my-2"></div>
+    </div>
+    <div class="card-body">
+      <div class="skeleton mb-3"></div>
+      <div class="skeleton mb-3"></div>
+      <div class="skeleton mb-3"></div>
+    </div>
+  </div>
+  <div [innerHtml]="detailed.text" class="my-3" *ngIf="!isLoading"></div>
+  <button class="btn btn-primary my-3" (click)="showComments = !showComments">
+    {{ showComments ? "Sembunyikan" : "Tampilkan" }} Komentar
+  </button>
+  <hr />
+  <h3 class="my-3">Komentar</h3>
+  <div class="card-columns" *ngIf="showComments">
+    <div class="card my-3" *ngIf="isLoading">
+      <div class="card-body">
+        <div class="skeleton mb-3"></div>
+        <p class="card-text">
+          <small class="text-muted">
+            <div class="skeleton-text mb-3"></div>
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="card my-3" *ngFor="let kid of comments">
+      <div class="card-body">
+        <div [innerHtml]="kid.text"></div>
+        <p class="card-text">
+          <small class="text-muted">
+            Creator: {{ kid.by }} | Posting: {{ kid.time | date }}
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
